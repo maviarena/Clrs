@@ -253,6 +253,17 @@ void AVLTree::insertFixup(Node* n)
 
 }
 
+Node* AVLTree::recursiveInsert(Node* root, int val)
+{
+	if( root = NULL)
+		return createNode(val);
+	else if(val < root->getVal())
+		root->setLeftChild(recursiveInsert(root->getLeftChild(), val);
+	else if(val > root->getVal())
+		root->setRightChild(recursiveInsert(root->getRightChild(), val);
+
+	
+}
 void AVLTree::insertNode(int n)
 {
 	Node* temp = createNode(n);
@@ -260,8 +271,7 @@ void AVLTree::insertNode(int n)
 	if(getRoot() == NULL)
 	{
 		setRoot(temp);
-		getRoot()->setColor(Node::BLACK);
-		cout<<"Root is set :: "<< n <<" & colour is "<< getRoot()->getColorAsString()<<endl;
+		cout<<"Root is set :: "<< n <<endl;
 	}
 	else
 	{
@@ -279,15 +289,16 @@ void AVLTree::insertNode(int n)
 		if( n <= p->getVal())
 		{
 			p->setLeftChild(temp);
-			cout<<n<<" is added to left of "<< p->getVal()<<" who has the color "<<p->getColorAsString()<<endl;
+			cout<<n<<" is added to left of "<< p->getVal()<<edl;
 		}
 		else
 		{
 			p->setRightChild(temp);
-			cout<<n<<" is added to right of "<< p->getVal()<<" who has the color "<<p->getColorAsString()<<endl;
+			cout<<n<<" is added to right of "<< p->getVal()<<endl;
 		}
 		temp->setParent(p);
-		cout<<n<<" whose value is "<< temp->getVal()<<" who has the color "<<temp->getColorAsString()<<endl;
+		cout<<n<<" whose value is "<< temp->getVal()<<endl;
+		
 		insertFixup(temp);
 	}
 }
